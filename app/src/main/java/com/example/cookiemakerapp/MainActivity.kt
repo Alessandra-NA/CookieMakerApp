@@ -3,6 +3,7 @@ package com.example.cookiemakerapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import com.example.cookiemakerapp.fragments.NuevaRecetaFragment
 import com.example.cookiemakerapp.fragments.RecetasFragment
 import pe.edu.ulima.pm.ulgamestore.model.Ingrediente
 import pe.edu.ulima.pm.ulgamestore.model.Receta
@@ -11,6 +12,9 @@ import pe.edu.ulima.pm.ulgamestore.model.RecetasManager
 class MainActivity : AppCompatActivity() {
     var username: String? = null
     var recetasManager: RecetasManager? = null
+    //lista de los nuevos ingredientes de una receta nueva
+    var nuevosIngredientes: ArrayList<Ingrediente>? = null
+
     private var fragments = ArrayList<Fragment>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,6 +24,8 @@ class MainActivity : AppCompatActivity() {
         println(username)
 
         fragments.add(RecetasFragment())
+        fragments.add(NuevaRecetaFragment())
+
         recetasManager = RecetasManager().getInstance()
         this.setTitle("Recetas")
 
@@ -44,4 +50,13 @@ class MainActivity : AppCompatActivity() {
         ft.replace(R.id.frlayoutMain,fragment)
         ft.commit()
     }
+
+    fun changeNuevasRecetaFragment(){
+        val fragment = fragments[1]
+        val ft = supportFragmentManager.beginTransaction()
+        ft.replace(R.id.frlayoutMain,fragment)
+        ft.commit()
+    }
+
+
 }
