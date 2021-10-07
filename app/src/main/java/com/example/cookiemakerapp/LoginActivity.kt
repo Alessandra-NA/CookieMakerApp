@@ -10,7 +10,7 @@ class LoginActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-
+        this.setTitle("Login")
         val txtareaUsername: EditText = findViewById(R.id.txtareaUsername)
 
         val btnLogin : Button = findViewById(R.id.btnLogin)

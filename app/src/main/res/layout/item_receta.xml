@@ -9,11 +9,12 @@
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="180dp"
+        android:layout_marginTop="12dp"
+        android:alpha="0.6"
         android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:alpha="0.6"
         app:srcCompat="@drawable/galletas2" />
 
     <TextView

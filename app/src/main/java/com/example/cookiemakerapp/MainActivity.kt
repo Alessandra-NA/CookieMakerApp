@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
 
         fragments.add(RecetasFragment())
         recetasManager = RecetasManager().getInstance()
+        this.setTitle("Recetas")
 
         val fragment = fragments[0]
         val ft = supportFragmentManager.beginTransaction()
@@ -37,6 +38,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun changeRecetasFragment(){
+        this.setTitle("Recetas")
         val fragment = fragments[0]
         val ft = supportFragmentManager.beginTransaction()
         ft.replace(R.id.frlayoutMain,fragment)
