@@ -23,9 +23,11 @@ class RecetasListAdapter(
     {
         val imgReceta: ImageView
         val txtTituloRecetaItem: TextView
+        val txtAutorRecetaItem: TextView
         init{
             imgReceta = view.findViewById(R.id.imgReceta)
             txtTituloRecetaItem = view.findViewById(R.id.txtTituloRecetaItem)
+            txtAutorRecetaItem = view.findViewById(R.id.txtAutorRecetaItem)
             view.setOnClickListener(this)
         }
         override fun onClick(v: View?) {
@@ -43,6 +45,7 @@ class RecetasListAdapter(
 
     override fun onBindViewHolder(holder: RecetasListAdapter.ViewHolder, position: Int) {
         holder.txtTituloRecetaItem.text = recetasList[position].nombre
+        holder.txtAutorRecetaItem.text = recetasList[position].usuario
         Glide.with(fragment)
             .load(recetasList[position].imagen)
             .fitCenter()
