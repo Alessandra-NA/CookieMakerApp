@@ -3,6 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/DATA/PROGRA MOVIL/TRABAJO 2 OFICIAL/CookieMakerApp/app/src/main/res/layout-land/activity_login.xml" value="0.13125" />
+        <entry key="..\:/DATA/PROGRA MOVIL/TRABAJO 2 OFICIAL/CookieMakerApp/app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="..\:/DATA/PROGRA MOVIL/TRABAJO 2 OFICIAL/CookieMakerApp/app/src/main/res/layout/activity_main.xml" value="0.11413043478260869" />
+        <entry key="..\:/DATA/PROGRA MOVIL/TRABAJO 2 OFICIAL/CookieMakerApp/app/src/main/res/layout/fragment_detallereceta.xml" value="0.16032608695652173" />
+        <entry key="..\:/DATA/PROGRA MOVIL/TRABAJO 2 OFICIAL/CookieMakerApp/app/src/main/res/layout/fragment_nuevareceta.xml" value="0.16032608695652173" />
+        <entry key="..\:/DATA/PROGRA MOVIL/TRABAJO 2 OFICIAL/CookieMakerApp/app/src/main/res/layout/fragment_recetas.xml" value="0.16032608695652173" />
+        <entry key="..\:/DATA/PROGRA MOVIL/TRABAJO 2 OFICIAL/CookieMakerApp/app/src/main/res/layout/fragment_seleccionar.xml" value="0.16032608695652173" />
+        <entry key="..\:/DATA/PROGRA MOVIL/TRABAJO 2 OFICIAL/CookieMakerApp/app/src/main/res/layout/item_ingrediente.xml" value="0.16032608695652173" />
+        <entry key="..\:/DATA/PROGRA MOVIL/TRABAJO 2 OFICIAL/CookieMakerApp/app/src/main/res/layout/item_receta.xml" value="0.16032608695652173" />
         <entry key="..\:/GUARDAR/Universidad/2021-2/Programacion-movil/CookieMakerApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.19722222222222222" />
         <entry key="..\:/GUARDAR/Universidad/2021-2/Programacion-movil/CookieMakerApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.19722222222222222" />
         <entry key="..\:/GUARDAR/Universidad/2021-2/Programacion-movil/CookieMakerApp/app/src/main/res/layout-land/activity_login.xml" value="0.1626984126984127" />

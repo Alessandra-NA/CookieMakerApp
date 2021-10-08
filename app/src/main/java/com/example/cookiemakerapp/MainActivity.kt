@@ -2,17 +2,26 @@ package com.example.cookiemakerapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.cookiemakerapp.fragments.DetalleRecetaFragment
 import com.example.cookiemakerapp.fragments.NuevaRecetaFragment
 import com.example.cookiemakerapp.fragments.RecetasFragment
+import com.example.cookiemakerapp.fragments.SeleccionarFragment
 import pe.edu.ulima.pm.ulgamestore.model.Ingrediente
 import pe.edu.ulima.pm.ulgamestore.model.Receta
 import pe.edu.ulima.pm.ulgamestore.model.RecetasManager
 
-class MainActivity : AppCompatActivity(), RecetasFragment.OnProductSelectedListener {
+class MainActivity : AppCompatActivity(),
+    RecetasFragment.OnProductSelectedListener,
+    NuevaRecetaFragment.OnButtonListener,
+        SeleccionarFragment.OnIngredienteListener
+{
     var username: String? = null
     var recetasManager: RecetasManager? = null
+    var IngredientesN = ArrayList<Ingrediente>()
+    var NuevaRecetaNombre : String? = null
+
 
     private var fragments = ArrayList<Fragment>()
 
@@ -24,11 +33,12 @@ class MainActivity : AppCompatActivity(), RecetasFragment.OnProductSelectedListe
 
         if(fragments.size == 0){
             fragments.add(RecetasFragment())
-            fragments.add(NuevaRecetaFragment())
+//            fragments.add(NuevaRecetaFragment())
         }
 
         recetasManager = RecetasManager().getInstance()
         this.setTitle("Recetas")
+
 
         val fragment = fragments[0]
         val ft = supportFragmentManager.beginTransaction()
@@ -48,14 +58,19 @@ class MainActivity : AppCompatActivity(), RecetasFragment.OnProductSelectedListe
         val fragment = fragments[0]
         val ft = supportFragmentManager.beginTransaction()
         ft.replace(R.id.frlayoutMain,fragment)
+        ft.addToBackStack(null)
         ft.commit()
     }
 
     fun changeNuevasRecetaFragment(){
-        val fragment = fragments[1]
+        this.setTitle("Nueva Receta")
+        val fragment= NuevaRecetaFragment(this.IngredientesN,username!!,this.NuevaRecetaNombre)
+//        val fragment = fragments[1]
         val ft = supportFragmentManager.beginTransaction()
         ft.replace(R.id.frlayoutMain,fragment)
+        ft.addToBackStack(null)
         ft.commit()
+
     }
 
     fun changeDetalleReceta(receta: Receta){
@@ -66,8 +81,44 @@ class MainActivity : AppCompatActivity(), RecetasFragment.OnProductSelectedListe
         ft.addToBackStack(null)
         ft.commit()
     }
+
+    fun changeSeleccionarIngrediente(){
+
+        this.setTitle("Elegir Ingrediente")
+        val fragment = SeleccionarFragment()
+        val ft = supportFragmentManager.beginTransaction()
+        ft.replace(R.id.frlayoutMain,fragment)
+        ft.addToBackStack(null)
+        ft.commit()
+    }
+//nota: por alguna razon cuando retrocedes con el botn del cel, se muestran pantallas en un orden que no es
+
     override fun onSelect(receta: Receta) {
         changeDetalleReceta(receta)
+    }
+
+    override fun onClick() {
+        changeNuevasRecetaFragment()
+    }
+
+    override fun OnclickIngrediente(name:String?) {
+        this.NuevaRecetaNombre=name
+        changeSeleccionarIngrediente()
+    }
+
+    override fun OnClickGuardar(recetaNueva: Receta) {
+
+        recetasManager?.addReceta(recetaNueva)
+        IngredientesN.removeAll(IngredientesN)
+        this.NuevaRecetaNombre=null
+//copiar elementos antes
+        changeRecetasFragment()
+
+    }
+
+    override fun onIngredienteA(ingredie: Ingrediente) {
+       IngredientesN.add(ingredie)
+        changeNuevasRecetaFragment()
     }
 
 }

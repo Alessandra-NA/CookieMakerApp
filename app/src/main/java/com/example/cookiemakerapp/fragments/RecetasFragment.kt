@@ -17,6 +17,7 @@ import pe.edu.ulima.pm.ulgamestore.model.RecetasManager
 class RecetasFragment: Fragment() {
     interface OnProductSelectedListener {
         fun onSelect(receta : Receta)
+        fun onClick()
     }
     private var listener : OnProductSelectedListener? = null
 
@@ -36,11 +37,13 @@ class RecetasFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val butAgregar = view.findViewById<Button>(R.id.btnAgregarReceta)
-        butAgregar.setOnClickListener(){
-            activity?.setTitle("Nueva Receta")
-            val ft = fragmentManager?.beginTransaction()
-            ft?.replace(R.id.frlayoutMain,NuevaRecetaFragment())
-            ft?.commit()
+        butAgregar.setOnClickListener(){_:View->
+//            activity?.setTitle("Nueva Receta")
+            listener?.onClick()
+//            activity?.setTitle("Nueva Receta")
+//            val ft = fragmentManager?.beginTransaction()
+//            ft?.replace(R.id.frlayoutMain,NuevaRecetaFragment())
+//            ft?.commit()
         }
 
         val recycListadoRecetas= view.findViewById<RecyclerView>(R.id.recycListadoRecetas)

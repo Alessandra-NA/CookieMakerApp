@@ -11,6 +11,8 @@ class RecetasManager {
         mIngredientes.add(Ingrediente("Harina"))
         mIngredientes.add(Ingrediente("Vainilla"))
         mIngredientes.add(Ingrediente("Polvo de Hornear"))
+        //una comida bien hecha necesita amor de abuelita o de madre
+        mIngredientes.add(Ingrediente("Amor de abuela"))
     }
 
     companion object {
