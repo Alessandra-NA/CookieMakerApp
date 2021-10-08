@@ -21,7 +21,8 @@ class MainActivity : AppCompatActivity(),
     var recetasManager: RecetasManager? = null
     var IngredientesN = ArrayList<Ingrediente>()
     var NuevaRecetaNombre : String? = null
-    var currentFragment: String = "inicio"
+
+
     private var fragments = ArrayList<Fragment>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,17 +33,21 @@ class MainActivity : AppCompatActivity(),
 
         if(fragments.size == 0){
             fragments.add(RecetasFragment())
+//            fragments.add(NuevaRecetaFragment())
         }
+
         recetasManager = RecetasManager().getInstance()
         this.setTitle("Recetas")
+
+
         val fragment = fragments[0]
         val ft = supportFragmentManager.beginTransaction()
         ft.add(R.id.frlayoutMain,fragment)
         ft.commit()
         // añadiendo recetas de ejemplo
         if(RecetasManager().getInstance().getRecetas().size == 0) {
-            var r1: Receta = Receta(1,"Recetita 1", "Ejemplo", listOf(RecetasManager().getInstance().getIngredientes().get(0), RecetasManager().getInstance().getIngredientes().get(1)),"https://i.ibb.co/7X4J65H/g1.jpg")
-            var r2: Receta = Receta(2,"Recetita 2", "Ejemplo", listOf(RecetasManager().getInstance().getIngredientes().get(0), RecetasManager().getInstance().getIngredientes().get(1)),"https://i.ibb.co/JQDwJFY/g2.jpg")
+            var r1: Receta = Receta(1,"Recetita 1", username!!, listOf(RecetasManager().getInstance().getIngredientes().get(0), RecetasManager().getInstance().getIngredientes().get(1)),"https://i.ibb.co/7X4J65H/g1.jpg")
+            var r2: Receta = Receta(2,"Recetita 2", username!!, listOf(RecetasManager().getInstance().getIngredientes().get(0), RecetasManager().getInstance().getIngredientes().get(1)),"https://i.ibb.co/JQDwJFY/g2.jpg")
             recetasManager?.addReceta(r1)
             recetasManager?.addReceta(r2)
         }
@@ -55,17 +60,16 @@ class MainActivity : AppCompatActivity(),
         ft.replace(R.id.frlayoutMain,fragment)
         ft.addToBackStack(null)
         ft.commit()
-        IngredientesN.clear()
-        currentFragment = "inicio"
     }
 
     fun changeNuevasRecetaFragment(){
         this.setTitle("Nueva Receta")
-        val fragment= NuevaRecetaFragment(this.IngredientesN,username!!,this.NuevaRecetaNombre, recetasManager?.getInstance()?.getRecetas()?.size)
+        val fragment= NuevaRecetaFragment(this.IngredientesN,username!!,this.NuevaRecetaNombre)
+//        val fragment = fragments[1]
         val ft = supportFragmentManager.beginTransaction()
         ft.replace(R.id.frlayoutMain,fragment)
+        ft.addToBackStack(null)
         ft.commit()
-        currentFragment = "nueva receta"
 
     }
 
@@ -74,8 +78,8 @@ class MainActivity : AppCompatActivity(),
         val fragment = DetalleRecetaFragment(receta)
         val ft = supportFragmentManager.beginTransaction()
         ft.replace(R.id.frlayoutMain,fragment)
+        ft.addToBackStack(null)
         ft.commit()
-        currentFragment = "detalle receta"
     }
 
     fun changeSeleccionarIngrediente(){
@@ -86,35 +90,50 @@ class MainActivity : AppCompatActivity(),
         ft.replace(R.id.frlayoutMain,fragment)
         ft.addToBackStack(null)
         ft.commit()
-        currentFragment = "seleccionar ingrediente"
     }
+//nota: por alguna razon cuando retrocedes con el botn del cel, se muestran pantallas en un orden que no es
+
     override fun onSelect(receta: Receta) {
         changeDetalleReceta(receta)
     }
+
     override fun onClick() {
         changeNuevasRecetaFragment()
     }
+
     override fun OnclickIngrediente(name:String?) {
         this.NuevaRecetaNombre=name
         changeSeleccionarIngrediente()
     }
+
     override fun OnClickGuardar(recetaNueva: Receta) {
+
         recetasManager?.addReceta(recetaNueva)
         IngredientesN.removeAll(IngredientesN)
         this.NuevaRecetaNombre=null
+//copiar elementos antes
         changeRecetasFragment()
+
     }
+
     override fun onIngredienteA(ingredie: Ingrediente) {
        IngredientesN.add(ingredie)
         changeNuevasRecetaFragment()
     }
-    override fun onBackPressed() {
-        if(currentFragment == "inicio") {
-            intent.setClass(this, LoginActivity::class.java)
-            startActivity(intent)
-        }
-        else if (currentFragment == "detalle receta") changeRecetasFragment()
-        else if (currentFragment == "nueva receta") changeRecetasFragment()
-        else super.onBackPressed()
-    }
+
 }
+
+
+/*var list = arrayOf("https://i.ibb.co/7X4J65H/g1.jpg",
+    "https://i.ibb.co/JQDwJFY/g2.jpg",
+    "https://i.ibb.co/NV57Vsj/g3.jpg",
+    "https://i.ibb.co/2SWxJC1/g4.jpg",
+    "https://i.ibb.co/LQrr1vz/g5.jpg",
+    "https://i.ibb.co/TMGhH30/g6.jpg",
+    "https://i.ibb.co/WspnXgT/g7.jpg",
+    "https://i.ibb.co/V3NG8GV/g8.jpg",
+    "https://i.ibb.co/yPKDwRV/g9.jpg",
+    "https://i.ibb.co/HDjfZf2/g10.jpg",
+)
+  println(list.random())
+        */
