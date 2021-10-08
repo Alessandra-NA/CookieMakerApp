@@ -36,8 +36,8 @@ class MainActivity : AppCompatActivity(), RecetasFragment.OnProductSelectedListe
         ft.commit()
         // añadiendo recetas de ejemplo
         if(RecetasManager().getInstance().getRecetas().size == 0) {
-            var r1: Receta = Receta(1,"Recetita 1", "Ejemplo", listOf(RecetasManager().getInstance().getIngredientes().get(0), RecetasManager().getInstance().getIngredientes().get(1)))
-            var r2: Receta = Receta(2,"Recetita 2", "Ejemplo", listOf(RecetasManager().getInstance().getIngredientes().get(0), RecetasManager().getInstance().getIngredientes().get(1)))
+            var r1: Receta = Receta(1,"Recetita 1", username!!, listOf(RecetasManager().getInstance().getIngredientes().get(0), RecetasManager().getInstance().getIngredientes().get(1)),"https://i.ibb.co/7X4J65H/g1.jpg")
+            var r2: Receta = Receta(2,"Recetita 2", username!!, listOf(RecetasManager().getInstance().getIngredientes().get(0), RecetasManager().getInstance().getIngredientes().get(1)),"https://i.ibb.co/JQDwJFY/g2.jpg")
             recetasManager?.addReceta(r1)
             recetasManager?.addReceta(r2)
         }
@@ -70,3 +70,18 @@ class MainActivity : AppCompatActivity(), RecetasFragment.OnProductSelectedListe
     }
 
 }
+
+
+/*var list = arrayOf("https://i.ibb.co/7X4J65H/g1.jpg",
+    "https://i.ibb.co/JQDwJFY/g2.jpg",
+    "https://i.ibb.co/NV57Vsj/g3.jpg",
+    "https://i.ibb.co/2SWxJC1/g4.jpg",
+    "https://i.ibb.co/LQrr1vz/g5.jpg",
+    "https://i.ibb.co/TMGhH30/g6.jpg",
+    "https://i.ibb.co/WspnXgT/g7.jpg",
+    "https://i.ibb.co/V3NG8GV/g8.jpg",
+    "https://i.ibb.co/yPKDwRV/g9.jpg",
+    "https://i.ibb.co/HDjfZf2/g10.jpg",
+)
+  println(list.random())
+        */

@@ -9,9 +9,10 @@
         android:id="@+id/txtNameReceta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:text="TextView"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,6 +24,8 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:text="Ingredientes:"
+        android:textColor="@color/design_default_color_primary"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtNameReceta" />
 
@@ -30,12 +33,12 @@
         android:id="@+id/recycListadoIngredientes1"
         android:layout_width="409dp"
         android:layout_height="633dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="50dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5"
         tools:itemCount="1"
-        tools:listitem="@layout/item_ingrediente"/>
+        tools:listitem="@layout/item_ingrediente" />
 </androidx.constraintlayout.widget.ConstraintLayout>

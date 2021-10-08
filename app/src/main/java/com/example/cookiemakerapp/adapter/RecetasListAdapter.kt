@@ -3,10 +3,12 @@ package com.example.cookiemakerapp.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import pe.edu.ulima.pm.ulgamestore.model.Receta
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.cookiemakerapp.R
 
 class RecetasListAdapter(
@@ -19,8 +21,10 @@ class RecetasListAdapter(
     class ViewHolder(view: View, val listener : (Receta) -> Unit,val recetasList : List<Receta>):
         RecyclerView.ViewHolder(view), View.OnClickListener
     {
+        val imgReceta: ImageView
         val txtTituloRecetaItem: TextView
         init{
+            imgReceta = view.findViewById(R.id.imgReceta)
             txtTituloRecetaItem = view.findViewById(R.id.txtTituloRecetaItem)
             view.setOnClickListener(this)
         }
@@ -39,6 +43,10 @@ class RecetasListAdapter(
 
     override fun onBindViewHolder(holder: RecetasListAdapter.ViewHolder, position: Int) {
         holder.txtTituloRecetaItem.text = recetasList[position].nombre
+        Glide.with(fragment)
+            .load(recetasList[position].imagen)
+            .fitCenter()
+            .into(holder.imgReceta)
     }
 
     override fun getItemCount(): Int {
