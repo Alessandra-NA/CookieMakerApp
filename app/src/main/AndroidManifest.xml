@@ -11,6 +11,7 @@
         android:theme="@style/Theme.CookieMakerApp">
         <activity
             android:windowSoftInputMode="adjustPan|adjustResize"
+            android:configChanges="orientation|screenSize|keyboardHidden"
             android:name=".MainActivity">
         </activity>
         <activity android:name=".LoginActivity"

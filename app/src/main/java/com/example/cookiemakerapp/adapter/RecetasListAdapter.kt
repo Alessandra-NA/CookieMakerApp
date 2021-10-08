@@ -39,7 +39,7 @@ class RecetasListAdapter(
         viewType: Int
     ): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_receta, parent, false)
-        val viewHolder = ViewHolder(view, listener, recetasList)
+        val viewHolder = RecetasListAdapter.ViewHolder(view, listener, recetasList)
         return viewHolder
     }
 

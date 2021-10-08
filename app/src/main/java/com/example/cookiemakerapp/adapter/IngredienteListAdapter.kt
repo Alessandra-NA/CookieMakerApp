@@ -41,7 +41,7 @@ class IngredienteListAdapter(private val ingredientesList: List<Ingrediente>): R
         viewType: Int
     ): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_ingrediente, parent, false)
-        val viewHolder = ViewHolder(view)
+        val viewHolder = IngredienteListAdapter.ViewHolder(view)
         return viewHolder
     }
 

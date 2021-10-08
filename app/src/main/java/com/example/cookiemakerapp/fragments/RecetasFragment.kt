@@ -1,13 +1,16 @@
 package com.example.cookiemakerapp.fragments
 
 import android.content.Context
+import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.GridLayout
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cookiemakerapp.R
 import com.example.cookiemakerapp.adapter.RecetasListAdapter
@@ -38,15 +41,12 @@ class RecetasFragment: Fragment() {
 
         val butAgregar = view.findViewById<Button>(R.id.btnAgregarReceta)
         butAgregar.setOnClickListener(){_:View->
-//            activity?.setTitle("Nueva Receta")
             listener?.onClick()
-//            activity?.setTitle("Nueva Receta")
-//            val ft = fragmentManager?.beginTransaction()
-//            ft?.replace(R.id.frlayoutMain,NuevaRecetaFragment())
-//            ft?.commit()
         }
 
         val recycListadoRecetas= view.findViewById<RecyclerView>(R.id.recycListadoRecetas)
+        if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) recycListadoRecetas.layoutManager = GridLayoutManager(context, 2)
+        else recycListadoRecetas.layoutManager = GridLayoutManager(context, 1)
         recycListadoRecetas.adapter = RecetasListAdapter(RecetasManager().getInstance().getRecetas(),
             this
         ) { receta: Receta ->

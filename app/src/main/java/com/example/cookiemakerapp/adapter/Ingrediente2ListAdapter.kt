@@ -52,7 +52,7 @@ class Ingrediente2ListAdapter(
         viewType: Int
     ): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_ingrediente, parent, false)
-        val viewHolder = ViewHolder(view,listener,IngredieList)
+        val viewHolder = Ingrediente2ListAdapter.ViewHolder(view,listener,IngredieList)
 
         return viewHolder
 
