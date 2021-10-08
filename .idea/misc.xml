@@ -3,18 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/DATA/PROGRA MOVIL/TRABAJO 2/CookieMakerApp/app/src/main/res/layout/activity_login.xml" value="0.22" />
-        <entry key="..\:/DATA/PROGRA MOVIL/TRABAJO 2/CookieMakerApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="..\:/DATA/PROGRA MOVIL/TRABAJO 2/CookieMakerApp/app/src/main/res/layout/fragment_newrecipe.xml" value="0.1408514492753623" />
-        <entry key="..\:/DATA/PROGRA MOVIL/TRABAJO 2/CookieMakerApp/app/src/main/res/layout/fragment_recetas.xml" value="0.22" />
-        <entry key="..\:/DATA/PROGRA MOVIL/TRABAJO 2/CookieMakerApp/app/src/main/res/layout/item_ingrediente.xml" value="0.1408514492753623" />
-        <entry key="..\:/DATA/PROGRA MOVIL/TRABAJO 2/CookieMakerApp/app/src/main/res/layout/item_receta.xml" value="0.1" />
         <entry key="..\:/GUARDAR/Universidad/2021-2/Programacion-movil/CookieMakerApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.19722222222222222" />
         <entry key="..\:/GUARDAR/Universidad/2021-2/Programacion-movil/CookieMakerApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.19722222222222222" />
         <entry key="..\:/GUARDAR/Universidad/2021-2/Programacion-movil/CookieMakerApp/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/GUARDAR/Universidad/2021-2/Programacion-movil/CookieMakerApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/GUARDAR/Universidad/2021-2/Programacion-movil/CookieMakerApp/app/src/main/res/layout/fragment_detallereceta.xml" value="0.14375" />
+        <entry key="..\:/GUARDAR/Universidad/2021-2/Programacion-movil/CookieMakerApp/app/src/main/res/layout/fragment_ingredientes.xml" value="0.2" />
         <entry key="..\:/GUARDAR/Universidad/2021-2/Programacion-movil/CookieMakerApp/app/src/main/res/layout/fragment_listadorecetas.xml" value="0.33" />
         <entry key="..\:/GUARDAR/Universidad/2021-2/Programacion-movil/CookieMakerApp/app/src/main/res/layout/fragment_recetas.xml" value="0.33" />
+        <entry key="..\:/GUARDAR/Universidad/2021-2/Programacion-movil/CookieMakerApp/app/src/main/res/layout/fragment_viewreceta.xml" value="0.22" />
+        <entry key="..\:/GUARDAR/Universidad/2021-2/Programacion-movil/CookieMakerApp/app/src/main/res/layout/item_ingrediente.xml" value="0.33" />
         <entry key="..\:/GUARDAR/Universidad/2021-2/Programacion-movil/CookieMakerApp/app/src/main/res/layout/item_receta.xml" value="0.25" />
         <entry key="..\:/GUARDAR/Universidad/2021-2/Programacion-movil/CookieMakerApp/app/src/main/res/layout/layout_listadorecetas.xml" value="0.14375" />
       </map>

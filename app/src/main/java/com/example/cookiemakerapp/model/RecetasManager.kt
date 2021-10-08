@@ -32,9 +32,8 @@ class RecetasManager {
         mRecetas.add(receta)
     }
 
-    fun getReceta(id : Int) : Receta? {
-        // Debe implementarlo !!!
-        return null
+    fun getReceta(id : Int?) : Receta? {
+        return mRecetas[id!!]
     }
 
     fun getIngredientes() : List<Ingrediente> {
