@@ -14,7 +14,7 @@ class NuevaRecetaFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_newrecipe,container,false)
+        return inflater.inflate(R.layout.fragment_nuevareceta,container,false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

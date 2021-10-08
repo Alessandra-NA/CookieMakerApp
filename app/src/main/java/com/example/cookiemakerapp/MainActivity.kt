@@ -59,6 +59,7 @@ class MainActivity : AppCompatActivity(), RecetasFragment.OnProductSelectedListe
     }
 
     fun changeDetalleReceta(receta: Receta){
+        this.setTitle("Detalle de la receta")
         val fragment = DetalleRecetaFragment(receta)
         val ft = supportFragmentManager.beginTransaction()
         ft.replace(R.id.frlayoutMain,fragment)

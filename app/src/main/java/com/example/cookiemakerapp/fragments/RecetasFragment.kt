@@ -36,8 +36,11 @@ class RecetasFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val butAgregar = view.findViewById<Button>(R.id.btnAgregarReceta)
-        butAgregar.setOnClickListener{ _ :View ->
-
+        butAgregar.setOnClickListener(){
+            activity?.setTitle("Nueva Receta")
+            val ft = fragmentManager?.beginTransaction()
+            ft?.replace(R.id.frlayoutMain,NuevaRecetaFragment())
+            ft?.commit()
         }
 
         val recycListadoRecetas= view.findViewById<RecyclerView>(R.id.recycListadoRecetas)
