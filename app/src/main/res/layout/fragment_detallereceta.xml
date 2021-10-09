@@ -23,10 +23,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
 
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:text="Ingredientes:"
-        android:textColor="@color/design_default_color_primary"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/yellow3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtNameReceta" />
 
@@ -34,7 +34,7 @@
         android:id="@+id/recycListadoIngredientes1"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="16dp"
         android:layout_marginBottom="5dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"

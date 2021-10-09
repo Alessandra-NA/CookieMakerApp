@@ -1,9 +1,13 @@
 package com.example.cookiemakerapp
 
+import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Html
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.cookiemakerapp.fragments.DetalleRecetaFragment
 import com.example.cookiemakerapp.fragments.NuevaRecetaFragment
 import com.example.cookiemakerapp.fragments.RecetasFragment
@@ -15,14 +19,14 @@ import pe.edu.ulima.pm.ulgamestore.model.RecetasManager
 class MainActivity : AppCompatActivity(),
     RecetasFragment.OnProductSelectedListener,
     NuevaRecetaFragment.OnButtonListener,
-        SeleccionarFragment.OnIngredienteListener
+    SeleccionarFragment.OnIngredienteListener
 {
     var username: String? = null
     var recetasManager: RecetasManager? = null
     var IngredientesN = ArrayList<Ingrediente>()
     var NuevaRecetaNombre : String? = null
 
-
+    var currentFragment: String = "inicio"
     private var fragments = ArrayList<Fragment>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,11 +37,10 @@ class MainActivity : AppCompatActivity(),
 
         if(fragments.size == 0){
             fragments.add(RecetasFragment())
-//            fragments.add(NuevaRecetaFragment())
         }
 
         recetasManager = RecetasManager().getInstance()
-        this.setTitle("Recetas")
+        this.setTitle(Html.fromHtml("<font color=\"black\">Recetas</font>"))
 
 
         val fragment = fragments[0]
@@ -46,52 +49,51 @@ class MainActivity : AppCompatActivity(),
         ft.commit()
         // añadiendo recetas de ejemplo
         if(RecetasManager().getInstance().getRecetas().size == 0) {
-            var r1: Receta = Receta(1,"Recetita 1", username!!, listOf(RecetasManager().getInstance().getIngredientes().get(0), RecetasManager().getInstance().getIngredientes().get(1)),"https://i.ibb.co/7X4J65H/g1.jpg")
-            var r2: Receta = Receta(2,"Recetita 2", username!!, listOf(RecetasManager().getInstance().getIngredientes().get(0), RecetasManager().getInstance().getIngredientes().get(1)),"https://i.ibb.co/JQDwJFY/g2.jpg")
+            var r1: Receta = Receta(1,"Recetita 1", "Ejemplo", listOf(RecetasManager().getInstance().getIngredientes().get(0), RecetasManager().getInstance().getIngredientes().get(1)),"https://i.ibb.co/7X4J65H/g1.jpg")
+            var r2: Receta = Receta(2,"Recetita 2", "Ejemplo", listOf(RecetasManager().getInstance().getIngredientes().get(0), RecetasManager().getInstance().getIngredientes().get(1)),"https://i.ibb.co/JQDwJFY/g2.jpg")
             recetasManager?.addReceta(r1)
             recetasManager?.addReceta(r2)
         }
     }
 
     fun changeRecetasFragment(){
-        this.setTitle("Recetas")
+        this.setTitle(Html.fromHtml("<font color=\"black\">Recetas</font>"))
         val fragment = fragments[0]
         val ft = supportFragmentManager.beginTransaction()
         ft.replace(R.id.frlayoutMain,fragment)
-        ft.addToBackStack(null)
         ft.commit()
+        IngredientesN.clear()
+        currentFragment = "inicio"
     }
 
     fun changeNuevasRecetaFragment(){
-        this.setTitle("Nueva Receta")
+        this.setTitle(Html.fromHtml("<font color=\"black\">Nueva Receta</font>"))
         val fragment= NuevaRecetaFragment(this.IngredientesN,username!!,this.NuevaRecetaNombre)
-//        val fragment = fragments[1]
         val ft = supportFragmentManager.beginTransaction()
         ft.replace(R.id.frlayoutMain,fragment)
-        ft.addToBackStack(null)
         ft.commit()
-
+        currentFragment = "nueva receta"
     }
 
     fun changeDetalleReceta(receta: Receta){
-        this.setTitle("Visualizar Receta")
+        this.setTitle(Html.fromHtml("<font color=\"black\">Visualizar Receta</font>"))
         val fragment = DetalleRecetaFragment(receta)
         val ft = supportFragmentManager.beginTransaction()
         ft.replace(R.id.frlayoutMain,fragment)
-        ft.addToBackStack(null)
         ft.commit()
+        currentFragment = "detalle receta"
     }
 
     fun changeSeleccionarIngrediente(){
-
-        this.setTitle("Elegir Ingrediente")
+        this.setTitle(Html.fromHtml("<font color=\"black\">Elegir Ingredientes</font>"))
         val fragment = SeleccionarFragment()
         val ft = supportFragmentManager.beginTransaction()
         ft.replace(R.id.frlayoutMain,fragment)
         ft.addToBackStack(null)
         ft.commit()
+        currentFragment = "seleccionar ingrediente"
     }
-//nota: por alguna razon cuando retrocedes con el botn del cel, se muestran pantallas en un orden que no es
+//nota: por alguna razon cuando retrocedes con el botn del cel, se muestran pantallas en un orden que no es -- SOLUCIONADO
 
     override fun onSelect(receta: Receta) {
         changeDetalleReceta(receta)
@@ -117,23 +119,34 @@ class MainActivity : AppCompatActivity(),
     }
 
     override fun onIngredienteA(ingredie: Ingrediente) {
-       IngredientesN.add(ingredie)
+        IngredientesN.add(ingredie)
         changeNuevasRecetaFragment()
     }
 
+    override fun onBackPressed() {
+        if(currentFragment == "inicio") {
+            intent.setClass(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
+        else if (currentFragment == "detalle receta") changeRecetasFragment()
+        else if (currentFragment == "nueva receta") {
+            IngredientesN.removeAll(IngredientesN)
+            this.NuevaRecetaNombre=null
+            changeRecetasFragment()
+        }
+        else super.onBackPressed()
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        if(currentFragment == "inicio"){
+            val recycListadoRecetas= findViewById<RecyclerView>(R.id.recycListadoRecetas)
+            if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+                recycListadoRecetas.layoutManager = GridLayoutManager(this, 2)
+            } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
+                recycListadoRecetas.layoutManager = GridLayoutManager(this, 1)
+            }
+        }
+    }
 }
 
-
-/*var list = arrayOf("https://i.ibb.co/7X4J65H/g1.jpg",
-    "https://i.ibb.co/JQDwJFY/g2.jpg",
-    "https://i.ibb.co/NV57Vsj/g3.jpg",
-    "https://i.ibb.co/2SWxJC1/g4.jpg",
-    "https://i.ibb.co/LQrr1vz/g5.jpg",
-    "https://i.ibb.co/TMGhH30/g6.jpg",
-    "https://i.ibb.co/WspnXgT/g7.jpg",
-    "https://i.ibb.co/V3NG8GV/g8.jpg",
-    "https://i.ibb.co/yPKDwRV/g9.jpg",
-    "https://i.ibb.co/HDjfZf2/g10.jpg",
-)
-  println(list.random())
-        */

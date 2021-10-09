@@ -2,6 +2,7 @@ package com.example.cookiemakerapp
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Html
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -11,7 +12,7 @@ class LoginActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        this.setTitle("Login")
+        this.setTitle(Html.fromHtml("<font color=\"black\">Login</font>"))
         val txtareaUsername: EditText = findViewById(R.id.txtareaUsername)
 
         val btnLogin : Button = findViewById(R.id.btnLogin)

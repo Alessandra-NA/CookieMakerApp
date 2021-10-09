@@ -41,7 +41,7 @@
             android:layout_marginBottom="40dp"
             android:text="Cookie Maker"
             android:textAppearance="@style/TextAppearance.AppCompat.Display2"
-            android:textColor="@color/design_default_color_primary"
+            android:textColor="@color/yellow3"
             app:layout_constraintBottom_toTopOf="@+id/txtareaUsername"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

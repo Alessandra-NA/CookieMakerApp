@@ -57,12 +57,23 @@ class NuevaRecetaFragment(val Ingred: List<Ingrediente>,val username:String,var 
                 //do nothing
                 Toast.makeText(context, "Falta informacion", Toast.LENGTH_SHORT).show()
             }else {
-
                 var listita = ArrayList<Ingrediente>()
                 for(i in Ingred){
                     listita.add(i)
                 }
-                RecetaNueva = Receta(3,view.findViewById<EditText>(R.id.RecetaName).text.toString(),username, listita,"https://i.ibb.co/JQDwJFY/g2.jpg")
+                var list = arrayOf("https://i.ibb.co/7X4J65H/g1.jpg",
+                    "https://i.ibb.co/JQDwJFY/g2.jpg",
+                    "https://i.ibb.co/NV57Vsj/g3.jpg",
+                    "https://i.ibb.co/2SWxJC1/g4.jpg",
+                    "https://i.ibb.co/LQrr1vz/g5.jpg",
+                    "https://i.ibb.co/TMGhH30/g6.jpg",
+                    "https://i.ibb.co/WspnXgT/g7.jpg",
+                    "https://i.ibb.co/V3NG8GV/g8.jpg",
+                    "https://i.ibb.co/yPKDwRV/g9.jpg",
+                    "https://i.ibb.co/HDjfZf2/g10.jpg")
+                RecetaNueva = Receta(RecetasManager().getInstance().getRecetas().size+1,view.findViewById<EditText>(R.id.RecetaName).text.toString(),username, listita,list.random())
+                print(RecetaNueva!!.imagen)
+
                 listener?.OnClickGuardar(RecetaNueva!!)
             }
 
